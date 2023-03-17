@@ -16,7 +16,7 @@ function App () {
   const inputEl: MutableRefObject<HTMLInputElement | null> = useRef(null)
 
   const handleFocus = () => {
-    inputEl.current.focus()
+    inputEl.current?.focus()
   }
 
   useEffect(() => {

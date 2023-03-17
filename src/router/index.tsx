@@ -1,20 +1,21 @@
 import  {lazy} from 'react'
 import { createHashRouter, Navigate } from 'react-router-dom'
-import Home from '../pages/home'
+import Partb from '../pages/part-b'
 // 引入方法一
 // const Home = lazy(() => import('../pages/home'))
 
-// 引入方法二
-// const Home = lazy(async () => {
-//   const res = await new Promise<any>((resolve) => {
-//     setTimeout(() => {
-//       resolve(HomeC)
-//     }, 2000)
-//   })
-//   return {default: res}
-// })
+// 引入方法二 模拟懒加载
+const PartB = lazy(async () => {
+  const res = await new Promise<any>((resolve) => {
+    setTimeout(() => {
+      resolve(Partb)
+    }, 2000)
+  })
+  return {default: res}
+})
 
-const Home2 = lazy(() => import('../pages/home2'))
+const PartA = lazy(() => import('../pages/part-a'))
+const Home = lazy(() => import('../pages/home'))
 
 export default  createHashRouter([
   {
@@ -26,7 +27,12 @@ export default  createHashRouter([
     element: <Home />
   },
   {
-    path: '/home2',
-    element: <Home2 />
+    path: '/part-a',
+    element: <PartA />
   },
+  {
+    path: '/part-b',
+    element: <PartB />
+  },
+
 ])
